@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+spec:
+  containers:
+  - name: test1
+    image: busybox
+    command: ["tail", "-f", "/dev/null"]
+    volumeMounts:
+      - mountPath: /var/test1
+        name: store
+  - name: test2
+    image: busybox
+    command: ["tail", "-f", "/dev/null"]
+    volumeMounts:
+      - mountPath: /var/test2
+        name: store
+  volumes:
+    - name: store
+      persistentVolumeClaim:
+        claimName: test-pvc
