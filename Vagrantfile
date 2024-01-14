@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
-      vb.memory = "1024"
+      vb.memory = "1536"
   end
 
   config.vm.define "server" do |server|
