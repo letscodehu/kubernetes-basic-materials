@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dump
+spec:
+  template:
+    metadata:
+      name: dump
+    spec:
+      containers:
+      - name: mysql-dump-container
+        image: mysql:8
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          mysqldump -h db-0.mysql -u root -p'root' app
+      restartPolicy: Never
+  backoffLimit: 4
